@@ -1,0 +1,70 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "office-auto-writer"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "wangquanqing", email = "wangquanqing1636@sina.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = []
+
+[project.urls]
+Documentation = "https://github.com/wangquanqing/office-auto-writer#readme"
+Issues = "https://github.com/wangquanqing/office-auto-writer/issues"
+Source = "https://github.com/wangquanqing/office-auto-writer"
+
+[tool.hatch.version]
+path = "src/office_auto_writer/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/office_auto_writer tests}"
+
+[tool.coverage.run]
+source_pkgs = ["office_auto_writer", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/office_auto_writer/__about__.py",
+]
+
+[tool.coverage.paths]
+office_auto_writer = ["src/office_auto_writer", "*/office-auto-writer/src/office_auto_writer"]
+tests = ["tests", "*/office-auto-writer/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["win-64"]
+
+[tool.pixi.pypi-dependencies]
+office-auto-writer = { path = ".", editable = true }
+
+[tool.pixi.tasks]
