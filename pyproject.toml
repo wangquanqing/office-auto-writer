@@ -24,7 +24,7 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = []
+dependencies = ["lunar-python>=1.4.8,<2", "cnlunar>=0.2.4,<0.3"]
 
 [project.urls]
 Documentation = "https://github.com/wangquanqing/office-auto-writer#readme"
@@ -68,3 +68,10 @@ platforms = ["win-64"]
 office-auto-writer = { path = ".", editable = true }
 
 [tool.pixi.tasks]
+
+[tool.pixi.dependencies]
+python = ">=3.14.4,<3.15"
+pandas = ">=3.0.2,<4"
+xlsxwriter = ">=3.2.9,<4"
+openpyxl = ">=3.1.5,<4"
+python-docx = ">=1.2.0,<2"
